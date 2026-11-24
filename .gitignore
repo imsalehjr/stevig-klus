@@ -1,0 +1,13 @@
+.env
+/vendor/
+/storage/mail/*
+!/storage/mail/.gitkeep
+/storage/uploads/requests/*
+!/storage/uploads/requests/.gitkeep
+/storage/uploads/tmp/*
+!/storage/uploads/tmp/.gitkeep
+/public/uploads/projects/*
+!/public/uploads/projects/.gitkeep
+!/public/uploads/projects/.htaccess
+.DS_Store
+Thumbs.db
