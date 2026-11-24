@@ -21,7 +21,7 @@ final class Csrf
     {
         $sent = $_POST['csrf_token'] ?? '';
         if (!is_string($sent) || !hash_equals(self::token(), $sent)) {
-            http_response_code(419);
+            http_response_code(403);
             exit('Je sessie is verlopen. Ga terug, vernieuw de pagina en probeer het opnieuw.');
         }
     }
