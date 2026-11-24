@@ -109,3 +109,7 @@ a.stat:hover { border-color: var(--ink); }
 
 .empty-row { text-align: center; color: var(--muted); padding: 2rem !important; }
 .admin .panel h3 { margin-top: 1.5rem; font-size: var(--step-0); }
+.link-dark { color: var(--pine); font-weight: 600; }
+.admin-grid > *, .admin-bar-inner > * { min-width: 0; }
+.admin .photo-grid figcaption { flex-wrap: wrap; }
+.admin .photo-grid figcaption > span { flex: 1 1 100%; }
