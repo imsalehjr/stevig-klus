@@ -4,10 +4,12 @@
 !/storage/mail/.gitkeep
 /storage/uploads/requests/*
 !/storage/uploads/requests/.gitkeep
+!/storage/uploads/requests/demo-request-*.webp
 /storage/uploads/tmp/*
 !/storage/uploads/tmp/.gitkeep
 /public/uploads/projects/*
 !/public/uploads/projects/.gitkeep
 !/public/uploads/projects/.htaccess
+!/public/uploads/projects/demo-*.webp
 .DS_Store
 Thumbs.db
