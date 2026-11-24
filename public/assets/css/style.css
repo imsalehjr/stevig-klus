@@ -420,3 +420,5 @@ a:hover { color: var(--ink); }
 }
 .split .review { margin-bottom: 1.5rem; }
 .panel h1 { font-size: var(--step-3); }
+.split > *, .hero-grid > *, .field, .dropzone { min-width: 0; }
+.dropzone input[type="file"] { width: 100%; }
