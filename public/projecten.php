@@ -24,8 +24,9 @@ view('layout/header', [
         <p class="lead">Een selectie van onze klussen, met foto's van voor en na. Open een project en schuif over de foto om het verschil te zien.</p>
     </div>
 </section>
-<section class="section">
+<section class="section" aria-labelledby="overview-title">
     <div class="container">
+        <h2 class="sr-only" id="overview-title">Overzicht van projecten</h2>
         <nav class="filter-bar" aria-label="Filter op dienst">
             <a href="<?= e(url('projecten')) ?>"<?= $filter ? '' : ' aria-current="true"' ?>>Alles</a>
             <?php foreach ($services as $s): ?>
