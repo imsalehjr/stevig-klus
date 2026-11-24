@@ -418,3 +418,4 @@ a:hover { color: var(--ink); }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+.split .review { margin-bottom: 1.5rem; }
