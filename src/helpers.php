@@ -14,7 +14,14 @@ function url(string $path = ''): string
 
 function asset(string $path): string
 {
-    $file = BASE_PATH . '/public/assets/' . ltrim($path, '/');
+    $path = ltrim($path, '/');
+    if (Env::get('APP_ENV', 'production') !== 'local' && preg_match('/\.(css|js)$/', $path)) {
+        $min = preg_replace('/\.(css|js)$/', '.min.$1', $path);
+        if (is_file(BASE_PATH . '/public/assets/' . $min)) {
+            $path = $min;
+        }
+    }
+    $file = BASE_PATH . '/public/assets/' . $path;
     $version = is_file($file) ? (string) filemtime($file) : '1';
     return url('assets/' . ltrim($path, '/')) . '?v=' . $version;
 }

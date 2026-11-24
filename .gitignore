@@ -13,3 +13,4 @@
 !/public/uploads/projects/demo-*.webp
 .DS_Store
 Thumbs.db
+node_modules/

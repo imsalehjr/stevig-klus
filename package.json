@@ -1,0 +1,11 @@
+{
+  "name": "stevig-klus-renovatie",
+  "private": true,
+  "description": "Build step: minify CSS and JS for production.",
+  "scripts": {
+    "build": "esbuild public/assets/css/style.css public/assets/css/admin.css public/assets/js/app.js public/assets/js/admin.js --minify --outdir=public/assets --entry-names=[dir]/[name].min --outbase=public/assets --log-level=warning"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
