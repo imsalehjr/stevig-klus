@@ -105,6 +105,11 @@
         });
     }
 
+    var summary = document.getElementById('error-summary');
+    if (summary) {
+        summary.focus();
+    }
+
     var started = document.querySelector('form[data-submit-once]');
     if (started) {
         started.addEventListener('submit', function () {

@@ -419,3 +419,4 @@ a:hover { color: var(--ink); }
     *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 .split .review { margin-bottom: 1.5rem; }
+.panel h1 { font-size: var(--step-3); }
