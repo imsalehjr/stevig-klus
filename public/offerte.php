@@ -72,7 +72,7 @@ if (is_post()) {
                 $v->add('privacy', 'Geef toestemming om uw gegevens te gebruiken voor deze aanvraag.');
             }
 
-            $files = ImageUpload::files('photos');
+            $files = is_demo() ? [] : ImageUpload::files('photos');
             if (count($files) > $maxFiles) {
                 $v->add('photos', "U kunt maximaal $maxFiles foto's meesturen.");
             }
@@ -216,12 +216,16 @@ view('layout/header', [
 
                     <div class="field">
                         <label for="photos">Foto's (optioneel)</label>
+                        <?php if (is_demo()): ?>
+                        <p class="hint">In deze demo staat foto's uploaden uit. Bij een echte website kan de klant hier foto's van de klus meesturen.</p>
+                        <?php else: ?>
                         <div class="dropzone" data-dropzone data-max-files="<?= $maxFiles ?>" data-max-mb="<?= $maxMb ?>">
                             <?php view('partials/icon', ['name' => 'camera']); ?>
                             <span class="hint" id="photos-hint">Maximaal <?= $maxFiles ?> foto's, JPG, PNG of WebP, tot <?= $maxMb ?> MB per foto. Locatiegegevens in uw foto's halen we automatisch weg.</span>
                             <input type="file" id="photos" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="photos-hint"<?= isset($errors['photos']) ? ' aria-invalid="true"' : '' ?>>
                             <ul class="file-previews" aria-live="polite"></ul>
                         </div>
+                        <?php endif; ?>
                         <?= $errMsg('photos') ?>
                     </div>
                 </fieldset>

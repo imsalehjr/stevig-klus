@@ -134,6 +134,16 @@ klusbedrijf/
 └── templates/             # layout, partials, admin and email templates
 ```
 
+## Demo mode
+
+The public demo runs with `DEMO_MODE=true` in `.env`:
+
+- A banner explains that Stevig is fictional and that data is reset automatically. Pages send `noindex`.
+- Mail is never sent, even with `MAIL_DRIVER=smtp`. Messages are written to `storage/mail/` instead.
+- Photo uploads are switched off in the quote form and in the admin, so nobody can put files on the server.
+- The admin login shows the demo account from `DEMO_ADMIN_EMAIL` / `DEMO_ADMIN_PASSWORD`, and `/admin/setup.php` is disabled.
+- `php scripts/reset-demo.php` rebuilds the database from `database/*.sql`, recreates the demo admin and removes every non-demo upload and stored mail. Run it with a cron job. It only runs from the command line and refuses to run without `DEMO_MODE=true`.
+
 ## Deploy a demo
 
 To share a live link, a free PHP host such as **InfinityFree** works for a portfolio demo:

@@ -93,6 +93,11 @@ function not_found(): never
     exit;
 }
 
+function is_demo(): bool
+{
+    return Env::get('DEMO_MODE', 'false') === 'true';
+}
+
 function client_ip(): string
 {
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';

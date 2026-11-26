@@ -5,7 +5,7 @@ require dirname(__DIR__, 2) . '/src/bootstrap.php';
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex, nofollow');
 
-if (Auth::hasAnyAdmin()) {
+if (is_demo() || Auth::hasAnyAdmin()) {
     redirect('admin/login.php');
 }
 

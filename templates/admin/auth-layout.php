@@ -17,6 +17,13 @@
     <?php foreach (take_flashes() as $flash): ?>
         <div class="alert alert-<?= e($flash['type']) ?>" role="status"><?= e($flash['message']) ?></div>
     <?php endforeach; ?>
+    <?php if (!empty($demoLogin)): ?>
+        <div class="alert alert-info" role="note">
+            <strong>Demo-inlog</strong><br>
+            E-mailadres: <code><?= e($demoLogin['email']) ?></code><br>
+            Wachtwoord: <code><?= e($demoLogin['password']) ?></code>
+        </div>
+    <?php endif; ?>
     <?php if (!empty($error)): ?><div class="alert alert-error" role="alert"><?= e($error) ?></div><?php endif; ?>
     <form class="form" method="post">
         <?= Csrf::field() ?>

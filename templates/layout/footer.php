@@ -32,7 +32,7 @@ $footerServices = Database::pdo()->query('SELECT slug, name FROM services WHERE 
     </div>
     <div class="container footer-bottom">
         <p>&copy; <?= date('Y') ?> <?= e($c['name']) ?>. Fictief bedrijf, portfolio-project.</p>
-        <p><a href="<?= e(url('privacy')) ?>">Privacyverklaring</a></p>
+        <p><?php if (is_demo()): ?><a href="<?= e(url('admin/login.php')) ?>">Beheerpaneel (demo)</a> &middot; <?php endif; ?><a href="<?= e(url('privacy')) ?>">Privacyverklaring</a></p>
     </div>
 </footer>
 </body>

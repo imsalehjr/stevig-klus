@@ -52,7 +52,7 @@ final class Mailer
             $mail->Body = $html;
             $mail->AltBody = trim(html_entity_decode(strip_tags(str_replace(['<br>', '</p>', '</tr>', '</h1>', '</h2>'], "\n", $html)), ENT_QUOTES, 'UTF-8'));
 
-            if (Env::get('MAIL_DRIVER') === 'smtp') {
+            if (Env::get('MAIL_DRIVER') === 'smtp' && !is_demo()) {
                 $mail->isSMTP();
                 $mail->Host = (string) Env::get('SMTP_HOST', '');
                 $mail->Port = Env::int('SMTP_PORT', 587);

@@ -45,6 +45,11 @@ if (is_post()) {
         redirect('admin/projects.php?edit=' . $id . '#fotos');
     }
 
+    if ($action === 'upload' && $id > 0 && is_demo()) {
+        flash('error', "In de demo staat foto's uploaden uit.");
+        redirect('admin/projects.php?edit=' . $id . '#fotos');
+    }
+
     if ($action === 'upload' && $id > 0) {
         Throttle::prune();
         ImageUpload::cleanupTmp();
@@ -192,6 +197,9 @@ view('admin/header', ['title' => 'Projecten', 'active' => 'projects.php']);
         <section class="panel" id="fotos">
             <h2>Foto's</h2>
             <p class="muted">De eerste "voor"- en "na"-foto vormen samen de schuifvergelijking. Gebruik bij voorkeur foto's vanuit dezelfde hoek. Locatiegegevens worden automatisch verwijderd.</p>
+            <?php if (is_demo()): ?>
+            <p class="alert alert-info">In de demo staat foto's uploaden uit. Bij een echte website upload je hier je eigen voor- en na-foto's.</p>
+            <?php else: ?>
             <form class="form" method="post" action="<?= e(url('admin/projects.php')) ?>" enctype="multipart/form-data">
                 <?= Csrf::field() ?>
                 <input type="hidden" name="id" value="<?= (int) $editing['id'] ?>">
@@ -203,6 +211,7 @@ view('admin/header', ['title' => 'Projecten', 'active' => 'projects.php']);
                 <div class="field"><label for="photos">Foto's (max. <?= $maxFiles ?>, JPG/PNG/WebP, tot <?= $maxMb ?> MB)</label><input type="file" id="photos" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple required></div>
                 <p><button class="btn btn-dark" type="submit">Uploaden</button></p>
             </form>
+            <?php endif; ?>
             <?php foreach (['before' => 'Voor', 'after' => 'Na'] as $kind => $label): ?>
                 <h3><?= $label ?> (<?= count($photos[$kind]) ?>)</h3>
                 <?php if ($photos[$kind]): ?>

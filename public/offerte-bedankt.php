@@ -18,7 +18,11 @@ view('layout/header', ['title' => 'Aanvraag ontvangen', 'active' => 'offerte']);
             <?php if (!empty($done['reference'])): ?>
                 <p>Uw referentienummer is</p>
                 <p class="reference"><?= e($done['reference']) ?></p>
+                <?php if (is_demo()): ?>
+                <p>Bij een echt bedrijf krijgt u nu een bevestiging per e-mail. In deze demo wordt geen e-mail verstuurd. Uw aanvraag staat wel in het <a href="<?= e(url('admin/login.php')) ?>">beheerpaneel</a>.</p>
+                <?php else: ?>
                 <p>We hebben een bevestiging gestuurd naar <strong><?= e($done['email']) ?></strong><?= (int) $done['photos'] > 0 ? ', met een overzicht van uw aanvraag. We hebben ' . (int) $done['photos'] . ' foto(\'s)' . ' ontvangen' : '' ?>. Geen e-mail ontvangen? Kijk dan even in uw map met ongewenste e-mail.</p>
+                <?php endif; ?>
             <?php else: ?>
                 <p>We hebben uw aanvraag ontvangen en nemen zo snel mogelijk contact met u op.</p>
             <?php endif; ?>

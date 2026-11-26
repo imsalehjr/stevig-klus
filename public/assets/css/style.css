@@ -153,6 +153,8 @@ a:hover { color: var(--ink); }
 .alert-success { border-color: var(--ok); }
 .alert-error { border-color: var(--danger); }
 .alert-info { border-color: var(--tape); }
+.demo-banner { background: var(--tape); color: var(--ink); font-size: 0.875rem; padding: 0.55rem 0; line-height: 1.4; }
+.demo-banner a { color: inherit; font-weight: 700; text-decoration: underline; }
 
 .section { padding-block: clamp(3rem, 8vw, 5.5rem); }
 .section-white { background: var(--white); }

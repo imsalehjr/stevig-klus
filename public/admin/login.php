@@ -13,7 +13,7 @@ if (Auth::check()) {
 }
 
 $error = '';
-$email = '';
+$email = is_demo() ? (string) Env::get('DEMO_ADMIN_EMAIL', '') : '';
 
 if (is_post()) {
     Csrf::verify();
@@ -36,4 +36,5 @@ view('admin/auth-layout', [
     'email' => $email,
     'button' => 'Inloggen',
     'passwordAutocomplete' => 'current-password',
+    'demoLogin' => is_demo() ? ['email' => Env::get('DEMO_ADMIN_EMAIL', ''), 'password' => Env::get('DEMO_ADMIN_PASSWORD', '')] : null,
 ]);
