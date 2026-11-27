@@ -1,4 +1,4 @@
-Options -Indexes -ExecCGI
+Options -Indexes
 SetHandler none
 <IfModule mod_php.c>
     php_flag engine off
